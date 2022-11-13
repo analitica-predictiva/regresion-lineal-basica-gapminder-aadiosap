@@ -90,7 +90,8 @@ def pregunta_03():
     # un vector con valores entre el máximo y el mínimo de X_fertility
     prediction_space = np.linspace(
         X_fertility.min(),
-        X_fertility.max()
+        X_fertility.max(),
+        len(X_fertility)
     ).reshape(-1, 1)
 
     # Entrene el modelo usando X_fertility y y_life
