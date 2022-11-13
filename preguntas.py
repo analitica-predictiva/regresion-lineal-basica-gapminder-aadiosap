@@ -59,7 +59,7 @@ def pregunta_02():
     print(round(df["life"].mean(),4))
 
     # Imprima el tipo de dato de la columna `fertility`.
-    print(df["fertility"].dtype)
+    print(type(df['fertility']))
 
     # Imprima la correlación entre las columnas `GDP` y `life` con 4 decimales.
     print(round(df["GDP"].corr(df["life"]), 4))
@@ -88,11 +88,10 @@ def pregunta_03():
 
     # Cree El espacio de predicción. Esto es, use linspace para crear
     # un vector con valores entre el máximo y el mínimo de X_fertility
-    prediction_space = linspace(
+    prediction_space = np.linspace(
         X_fertility.min(),
         X_fertility.max(),
-        len(X_fertility)
-    ).reshape(len(X_fertility), 1)
+    ).reshape(-1, 1)
 
     # Entrene el modelo usando X_fertility y y_life
     reg.fit(X_fertility.values.reshape(-1, 1), y_life.values.reshape(-1, 1))
@@ -131,12 +130,12 @@ def pregunta_04():
     (X_train, X_test, y_train, y_test,) = train_test_split(
         X_fertility,
         y_life,
-        test_size=0.8,
+        test_size=0.2,
         random_state=53,
     )
 
     # Cree una instancia del modelo de regresión lineal
-    LR = linearRegression()
+    LR = LinearRegression()
 
     # Entrene el clasificador usando X_train y y_train
     LR.fit(X_train, y_train)
@@ -146,5 +145,5 @@ def pregunta_04():
 
     # Compute and print R^2 and RMSE
     print("R^2: {:6.4f}".format(LR.score(X_test, y_test)))
-    rmse = np.sqrt(mean_squared_error(X_test, y_test))
+    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     print("Root Mean Squared Error: {:6.4f}".format(rmse))
