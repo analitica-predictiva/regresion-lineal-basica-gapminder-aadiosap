@@ -90,7 +90,7 @@ def pregunta_03():
     # un vector con valores entre el máximo y el mínimo de X_fertility
     prediction_space = np.linspace(
         X_fertility.min(),
-        X_fertility.max(),
+        X_fertility.max()
     ).reshape(-1, 1)
 
     # Entrene el modelo usando X_fertility y y_life
@@ -100,7 +100,7 @@ def pregunta_03():
     y_pred = reg.predict(prediction_space)
 
     # Imprima el R^2 del modelo con 4 decimales
-    print(reg.score(y_pred, y_life).round(4))
+    print(reg.score(X_fertility, y_life).round(4))
 
 
 def pregunta_04():
