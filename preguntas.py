@@ -72,7 +72,7 @@ def pregunta_03():
     """
 
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
-    df = pd.read_csv("gm_2008_region")
+    df = pd.read_csv("gm_2008_region.csv")
 
     # Asigne a la variable los valores de la columna `fertility`
     X_fertility = df["fertility"]
@@ -136,15 +136,15 @@ def pregunta_04():
     )
 
     # Cree una instancia del modelo de regresión lineal
-    linearRegression = linearRegression()
+    LR = linearRegression()
 
     # Entrene el clasificador usando X_train y y_train
-    linearRegression.fit(X_train, y_train)
+    LR.fit(X_train, y_train)
 
     # Pronostique y_test usando X_test
-    y_pred = linearRegression.predict(X_test)
+    y_pred = LR.predict(X_test)
 
     # Compute and print R^2 and RMSE
-    print("R^2: {:6.4f}".format(linearRegression.score(X_test, y_test)))
+    print("R^2: {:6.4f}".format(LR.score(X_test, y_test)))
     rmse = np.sqrt(mean_squared_error(X_test, y_test))
     print("Root Mean Squared Error: {:6.4f}".format(rmse))
